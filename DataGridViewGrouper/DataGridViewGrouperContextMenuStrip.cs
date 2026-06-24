@@ -144,7 +144,7 @@ namespace DevDash.Controls
             void setdata()
             {
                 var groups = Grouper.GroupingSource.Groups;
-                var arr = groups == null ? null : groups.ToArray();
+                var arr = groups?.ToArray();
                 settingcur = true;
                 try
                 {

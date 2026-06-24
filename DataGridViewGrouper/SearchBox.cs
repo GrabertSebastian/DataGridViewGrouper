@@ -623,7 +623,7 @@ namespace DevDash.Controls
             {
                 if (col == value) return;
                 col = value;
-                propname = value == null ? null : value.Name;
+                propname = value?.Name;
                 pos.X = col == null ? 0 : col.Index.Value;
                 NotifyStateChanged(true);
             }

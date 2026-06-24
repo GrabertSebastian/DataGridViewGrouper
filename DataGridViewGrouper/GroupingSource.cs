@@ -365,8 +365,7 @@ namespace DevDash.Controls
                     base.OnListChanged( new ListChangedEventArgs( ListChangedType.ItemDeleted, index ) );
 
                     var gr = GetGroup( index );
-                    if ( gr != null )
-                        gr.Remove( rec );
+                    gr?.Remove( rec );
                 }
                 finally
                 {

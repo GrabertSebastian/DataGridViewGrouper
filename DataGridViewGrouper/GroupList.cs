@@ -49,8 +49,7 @@ namespace DevDash.Controls
                 }                
             }
             List.Clear();
-            if (newrows != null)
-                newrows.Rows.Clear();
+            newrows?.Rows.Clear();
 
             foreach (object row in Source.List)
             {

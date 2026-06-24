@@ -399,7 +399,7 @@ namespace DevDash.Controls
 
         public bool SetGroupOn(DataGridViewColumn col)
         {
-            return SetGroupOn(col == null ? null : col.DataPropertyName);
+            return SetGroupOn(col?.DataPropertyName );
         }
 
         public bool SetGroupOn(PropertyDescriptor Property)

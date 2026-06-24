@@ -75,8 +75,7 @@ namespace DevDash.Controls
         protected override void Dispose(bool disposing)
         {
             Grouper = null;
-            if (cm != null)
-                cm.Dispose();
+            cm?.Dispose();
             if (disposing && (components != null))
             {
                 components.Dispose();
