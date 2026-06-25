@@ -574,7 +574,7 @@ namespace DevDash.IO
             if (val is Pointer || val is IntPtr) return false;
             var dv = (DefaultValueAttribute)m.GetCustomAttributes(typeof(DefaultValueAttribute), true).FirstOrDefault();
             if (dv == null) return true;
-            return !object.Equals(val, dv.Value);
+            return !Equals( val, dv.Value);
         }
 
 
@@ -784,7 +784,7 @@ namespace DevDash.IO
 
         public byte[] Serialize(string s)
         {
-            var ba = new System.Collections.BitArray(s.Length * Base);
+            var ba = new BitArray( s.Length * Base);
 
             int pos = 0;
             foreach (var c in s)

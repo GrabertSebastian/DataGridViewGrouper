@@ -516,7 +516,7 @@ namespace DevDash.Controls
         /// <summary>
         /// The underlying textbox
         /// </summary>
-        public System.Windows.Forms.TextBox TextBox { get { return txt; } }
+        public TextBox TextBox { get { return txt; } }
 
 
         ContextMenuStripButton btnOptions;
@@ -567,12 +567,12 @@ namespace DevDash.Controls
         {
         }
 
-        void tsClear_Click(object sender, System.EventArgs e)
+        void tsClear_Click(object sender, EventArgs e )
         {
             txt.Clear();
         }
 
-        void tsInner_Click(object sender, System.EventArgs e)
+        void tsInner_Click(object sender, EventArgs e )
         {
             AlwaysSearchInnerText = !alwayswildcard;
         }
