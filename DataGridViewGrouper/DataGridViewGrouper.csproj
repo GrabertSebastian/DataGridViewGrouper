@@ -106,8 +106,8 @@
 		<None Include="App.config"/>
 	</ItemGroup>
 	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
-	<Target Name="RunProjectDumper" AfterTargets="Build">
-		<Exec Command="dotnet run --project &quot;C:\Develop\Shared\ProjectDumper&quot; &quot;$(SolutionDir)&quot;"/>
-		<Exec Command="xcopy &quot;$(ProjectDir)$(ProjectName)_dump.txt&quot; &quot;C:\Develop\Dumps&quot; /F /C /Y"/>
+	<Target Name="RunCodeWeaver" AfterTargets="Build">
+		<Exec Command="dotnet run --project &quot;C:\Develop\Shared\CodeWeaver&quot; &quot;$(SolutionDir)&quot;"/>
+		<Exec Command="xcopy &quot;$(ProjectDir)$(ProjectName)_weave.txt&quot; &quot;C:\Develop\Weaves\&quot; /F /C /Y /I"/>
 	</Target>
 </Project>

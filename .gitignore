@@ -362,3 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /DataGridViewGrouper/DataGridViewGrouper_dump.txt
+
+# Project weave files
+*_weave.txt
