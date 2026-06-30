@@ -1138,8 +1138,10 @@ namespace DevDash
 
         public IGenericComparer ThenBy(GenericComparer cmp)
         {
-            var list = new GenericComparers();
-            list.Add(cmp);
+            var list = new GenericComparers
+            {
+                cmp
+            };
             return list;
         }
     }
