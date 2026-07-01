@@ -60,14 +60,14 @@ namespace DevDash.Controls
 
         void SortDropDown_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            var item = e.ClickedItem as SortItem;
+            SortItem item = e.ClickedItem as SortItem;
             if (item == null) return;
             grouper.Options.GroupSortOrder = item.SortOrder;
         }
 
         void GroupOnDropDown_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            var item = e.ClickedItem as GroupOnItem;
+            GroupOnItem item = e.ClickedItem as GroupOnItem;
             if (item == null) return;
             var cur = grouper.GroupOn;
             if (item.EqualsInfo(cur))
@@ -88,7 +88,7 @@ namespace DevDash.Controls
         void jumptogroup(object sender, EventArgs e)
         {
 
-            var f = new FormJumpTo(Grouper);
+            FormJumpTo f = new FormJumpTo(Grouper);
             //f.MakeDialogForm(MessageBoxButtons.OK);
             f.Show(this);
         }
@@ -311,7 +311,7 @@ namespace DevDash.Controls
 
         booloption AddOption(string txt, GroupingOption o)
         {
-            var res = new booloption(o);
+            booloption res = new booloption(o);
             res.Text = txt;
             res.Strip = this;
             OptionsMenuItem.DropDownItems.Add(res);
@@ -336,7 +336,7 @@ namespace DevDash.Controls
         public ToolStripMenuItem AddGroupOnItem<T>(string Text, Func<T> Creator)
             where T : GroupingInfo
         {
-            var mi = new GroupOnItem<T>();
+            GroupOnItem<T> mi = new GroupOnItem<T>();
             mi.Text = Text;
             mi.CreateInfoDelegate = Creator;
             GroupOnMenuItem.DropDownItems.Add(mi);
@@ -410,7 +410,7 @@ namespace DevDash.Controls
 
         SortItem AddSortItem(SortOrder s)
         {
-            var si = new SortItem(s);
+            SortItem si = new SortItem(s);
             SortMenuItem.DropDownItems.Add(si);
             return si;
         }

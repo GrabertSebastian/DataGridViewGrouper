@@ -527,7 +527,7 @@ namespace DevDash.Controls
 
         void PaintGroupRow(DataGridViewRowPrePaintEventArgs e)
         {
-            var grouprow = (GroupRow)source[e.RowIndex];
+            GroupRow grouprow = (GroupRow)source[e.RowIndex];
             if (!selectionset)
             {
                 setselection();
@@ -540,7 +540,7 @@ namespace DevDash.Controls
             var r = e.RowBounds;
             r.Height--;
             
-            using (var bgb = new SolidBrush(info.BackColor))
+            using ( SolidBrush bgb = new SolidBrush(info.BackColor))
             {
                 //line under the group row
                 e.Graphics.DrawLine(Pens.SteelBlue, r.Left, r.Bottom, r.Right, r.Bottom);
@@ -556,9 +556,9 @@ namespace DevDash.Controls
                     //clear background
                     e.Graphics.FillRectangle(bgb, r);
 
-                    using (var fb = new SolidBrush(info.ForeColor))
+                    using ( SolidBrush fb = new SolidBrush(info.ForeColor))
                     {
-                        var sf = new StringFormat { LineAlignment = StringAlignment.Center };
+                        StringFormat sf = new StringFormat { LineAlignment = StringAlignment.Center };
                         if (info.Header != null)
                         {
                             var size = e.Graphics.MeasureString(info.Header, info.Font);
@@ -568,7 +568,7 @@ namespace DevDash.Controls
 
                         if (info.DisplayValue != null)
                         {
-                            using (var f = new Font(info.Font.FontFamily, info.Font.Size + 2, FontStyle.Bold))
+                            using ( Font f = new Font(info.Font.FontFamily, info.Font.Size + 2, FontStyle.Bold))
                             {
                                 var size = e.Graphics.MeasureString(info.DisplayValue, f);
                                 e.Graphics.DrawString(info.DisplayValue, f, fb, r, sf);

@@ -460,7 +460,7 @@ namespace DevDash.Controls
             var res = Split(enumeration);
             if (!CompactMaskedValues) return res;
 
-            var list = res.OrderByDescending(r => r.ToInt32(null)).ToList();
+            List<T> list = res.OrderByDescending(r => r.ToInt32(null)).ToList();
             for (int i = 0; i < list.Count; i++)
             {
                 var val = list[i].ToInt32(null);

@@ -18,27 +18,27 @@ namespace DevDash.IO
     {
         public static SimpleObjectSerializer Serialize(object o, Stream s)
         {
-            var os = new SimpleObjectSerializer(o);
+            SimpleObjectSerializer os = new SimpleObjectSerializer(o);
             os.SerializeTo(s);
             return os;
         }
 
         public static byte[] Serialize(object o)
         {
-            var os = new SimpleObjectSerializer(o);
+            SimpleObjectSerializer os = new SimpleObjectSerializer(o);
             return os.Serialize();
         }
 
         public static byte[] Serialize(object o, SimpleObjectFieldSerializationMode FieldMode)
         {
-            var os = new SimpleObjectSerializer(o, FieldMode);
+            SimpleObjectSerializer os = new SimpleObjectSerializer(o, FieldMode);
             return os.Serialize();
         }
 
         public static object Deserialize(byte[] data)
         {
-            using (var ms = new MemoryStream(data))
-            using (var b = new BinaryReader(ms))
+            using ( MemoryStream ms = new MemoryStream(data))
+            using ( BinaryReader b = new BinaryReader(ms))
                 return new SimpleObjectDeserializer(b).Object;
         }
         public static object Deserialize(BinaryReader b)
@@ -208,7 +208,7 @@ namespace DevDash.IO
 
             public RegisteredObject Register(object obj, SimpleObjectSerializationBase o)
             {
-                var r = new RegisteredObject { Object = obj, Serializer = o, Index = Objects.Count };
+                RegisteredObject r = new RegisteredObject { Object = obj, Serializer = o, Index = Objects.Count };
                 Objects.Add(r);
                 o.ObjectIndex = r.Index;
                 return r;
@@ -377,7 +377,7 @@ namespace DevDash.IO
 
         IEnumerable<IContentWriter> GetArrayValues()
         {
-            var arr = (Array)Object;
+            Array arr = (Array)Object;
             for (int i = 0; i < arr.Length; i++)
             {
                 var o = arr.GetValue(i);
@@ -439,7 +439,7 @@ namespace DevDash.IO
 
         public void SerializeTo(Stream s)
         {
-            var b = new BinaryWriter(s);
+            BinaryWriter b = new BinaryWriter(s);
             SerializeTo(b);
         }
 
@@ -506,7 +506,7 @@ namespace DevDash.IO
 
         public byte[] Serialize()
         {
-            using (var ms = new MemoryStream())
+            using ( MemoryStream ms = new MemoryStream())
             {
                 SerializeTo(ms);
                 return ms.ToArray();
@@ -555,7 +555,7 @@ namespace DevDash.IO
 
             else
             {
-                var type = Type.GetType("System." + TypeCode);
+                Type type = Type.GetType("System." + TypeCode);
                 var p = w.GetType().GetMethod("Write", new Type[] { type });
                 p.Invoke(w, new object[] { Object });
             }
@@ -572,7 +572,7 @@ namespace DevDash.IO
                 return false;
             val = m.GetValue(Object);
             if (val is Pointer || val is IntPtr) return false;
-            var dv = (DefaultValueAttribute)m.GetCustomAttributes(typeof(DefaultValueAttribute), true).FirstOrDefault();
+            DefaultValueAttribute dv = (DefaultValueAttribute)m.GetCustomAttributes(typeof(DefaultValueAttribute), true).FirstOrDefault();
             if (dv == null) return true;
             return !Equals( val, dv.Value);
         }
@@ -676,7 +676,7 @@ namespace DevDash.IO
         public Array RestoreArray()
         {
             var len = b.ReadInt32();
-            var arr = Array.CreateInstance(GetObjectType(), len);
+            Array arr = Array.CreateInstance(GetObjectType(), len);
             defs.Register(arr, this);
             for (int i = 0; i < len; i++)
             {
@@ -698,7 +698,7 @@ namespace DevDash.IO
                 throw new Exception("Cannot create an instance of " + TypeRef.Type.FullName);
             var o = ci.Invoke(null);
             defs.Register(o, this);
-            var co = o as ICustomSerializer;
+            ICustomSerializer co = o as ICustomSerializer;
             if (co != null)
             {
                 if (co.Deserialize(this)) return o;
@@ -784,7 +784,7 @@ namespace DevDash.IO
 
         public byte[] Serialize(string s)
         {
-            var ba = new BitArray( s.Length * Base);
+            BitArray ba = new BitArray( s.Length * Base);
 
             int pos = 0;
             foreach (var c in s)
@@ -900,7 +900,7 @@ namespace DevDash.IO
 
             if (compacter == null)
             {
-                var chars = new List<char>();
+                List<char> chars = new List<char>();
                 foreach (var s in list)
                 {
                     foreach (var c in s)
@@ -1138,7 +1138,7 @@ namespace DevDash
 
         public IGenericComparer ThenBy(GenericComparer cmp)
         {
-            var list = new GenericComparers
+            GenericComparers list = new GenericComparers
             {
                 cmp
             };

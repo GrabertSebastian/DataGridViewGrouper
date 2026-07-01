@@ -158,7 +158,7 @@ namespace DevDash.Controls
 
         protected virtual void OnInvalidModeSelected()
         {
-            var ex = new Exception("Source does not support " + Mode);
+            Exception ex = new Exception("Source does not support " + Mode);
             if(DesignMode)
                 throw ex;
             ShowException(ex);
@@ -769,17 +769,17 @@ namespace DevDash.Controls
 
             public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
             {
-                var b = (SourceSearchBox)context.Instance;
+                SourceSearchBox b = (SourceSearchBox)context.Instance;
                 if (b != null && b.Columns != null)
                 {
-                    var lb = new ListBox();
+                    ListBox lb = new ListBox();
                     foreach (var pd in b.props)
                     {
                         int i = lb.Items.Add(pd);
                         if (b.col == pd || pd.Name == b.propname)
                             lb.SelectedIndex = i;
                     }
-                    var iw = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
+                    IWindowsFormsEditorService iw = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
                     lb.Click += delegate
                     {
                         b.PropertyName = (string)lb.SelectedItem;
@@ -951,7 +951,7 @@ namespace DevDash.Controls
         {
             get
             {
-                var l = source.List as IBindingListView;
+                IBindingListView l = source.List as IBindingListView;
                 return l != null && l.SupportsFiltering;
             }
         }
