@@ -311,9 +311,11 @@ namespace DevDash.Controls
 
         booloption AddOption(string txt, GroupingOption o)
         {
-            booloption res = new booloption(o);
-            res.Text = txt;
-            res.Strip = this;
+            booloption res = new booloption( o )
+            {
+                Text = txt,
+                Strip = this
+            };
             OptionsMenuItem.DropDownItems.Add(res);
             return res; 
         }
@@ -336,9 +338,11 @@ namespace DevDash.Controls
         public ToolStripMenuItem AddGroupOnItem<T>(string Text, Func<T> Creator)
             where T : GroupingInfo
         {
-            GroupOnItem<T> mi = new GroupOnItem<T>();
-            mi.Text = Text;
-            mi.CreateInfoDelegate = Creator;
+            GroupOnItem<T> mi = new GroupOnItem<T>
+            {
+                Text = Text,
+                CreateInfoDelegate = Creator
+            };
             GroupOnMenuItem.DropDownItems.Add(mi);
             return mi;
         }

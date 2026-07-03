@@ -529,9 +529,11 @@ namespace DevDash.Controls
                 if (ShowOptionsButton == value) return;
                 if (value)
                 {
-                    btnOptions = new ContextMenuStripButton();
-                    btnOptions.Dock = DockStyle.Right;
-                    btnOptions.ContextMenuStrip = menu;
+                    btnOptions = new ContextMenuStripButton
+                    {
+                        Dock = DockStyle.Right,
+                        ContextMenuStrip = menu
+                    };
                     Controls.Add(btnOptions);
                 }
                 else

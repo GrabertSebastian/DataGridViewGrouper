@@ -69,9 +69,11 @@ namespace DevDash.Controls
 
                 if (gr == null)
                 {
-                    gr = new GroupRow(this);
-                    gr.value = key;
-                    gr.HashCode = hash;
+                    gr = new GroupRow( this )
+                    {
+                        value = key,
+                        HashCode = hash
+                    };
                     if (startcollapsed)
                         gr.SetCollapsed(true, false);
 
@@ -465,8 +467,10 @@ namespace DevDash.Controls
 
         public GroupDisplayEventArgs GetDisplayInfo(bool selected)
         {
-            GroupDisplayEventArgs e = new GroupDisplayEventArgs(this,Owner.Source.GroupOn);
-            e.Selected = selected;
+            GroupDisplayEventArgs e = new GroupDisplayEventArgs( this, Owner.Source.GroupOn )
+            {
+                Selected = selected
+            };
             SetDisplayInfo(e);
             if (e.Cancel) return null;
             Owner.Source.FireDisplayGroup(e);
